@@ -1,0 +1,164 @@
+* {
+    padding: 0;
+    margin: 0 auto;
+    font-size: 14px;
+}
+a {
+    color: #000;
+    text-decoration: none;
+    transition: all .5s;
+}
+a:hover {
+    color: #825cff;
+
+}
+ul, li {
+    list-style: none;
+}
+@font-face {
+    font-family: "MainFont";
+    src: url("../font/main.ttf");
+}
+.wrap {
+    width: 1200px;
+}
+
+
+.banner {
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../images/bg.jpg");
+}
+.banner .logo {
+    width: 414px;
+    height: 141px;
+}
+.share {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+.share ul {
+    display: flex;
+    flex: 4;
+    cursor: pointer;
+    height: 60px;
+}
+.share ul:nth-child(2) {
+    justify-content: center;
+    flex: 1;
+}
+.share ul:first-child {
+    flex-direction: row-reverse;
+}
+.share li {
+    position: absolute;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    transition: all 1s;
+}
+.share li:first-child {
+    transform:rotateY(0);
+}
+.share li:last-child {
+    transform:rotateY(-180deg);
+}
+.share ul:hover li:first-child {
+    transform:rotateY(-180deg);
+}
+.share ul:hover li:last-child{
+    transform:rotateY(0deg);
+}
+
+
+nav {
+    display: flex;
+    height: 70px;
+    line-height: 70px;
+    border-bottom: 1px solid #ddd;
+    justify-content: space-between;
+}
+nav .logo {
+    flex: 1;
+    justify-content: flex-start;
+    padding-left: 50px;
+    text-transform: uppercase;
+
+}
+nav .logo a {
+    font-family: "MainFont";
+}
+nav .nav {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+
+.main {
+    padding-top: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+.main h3, .main h2 {
+    font-weight: normal;
+}
+.main section {
+    margin-bottom: 50px;
+}
+.main article {
+    margin-top: 20px;
+}
+.main article:first-child {
+    margin-top: 0;
+}
+.main .news {
+    flex: 5;
+    margin-right: 100px;
+}
+.main .news p {
+    padding: 15px 0;
+    color: #333;
+}
+.main .news p.tag {
+    color: #666;
+    font-size: 12px;
+}
+.main .news img {
+    height: 200px;
+}
+.main aside {
+    flex: 2;
+}
+.main h3 {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+.main .tag a {
+    border: 1px solid #ddd;
+    padding: 5px 15px;
+    display: inline-block;
+    margin: 0 5px 10px 0;
+    border-radius: 3px;
+}
+.main .message li {
+    height: 30px;
+    line-height: 30px;
+    width: 100%;
+    overflow: hidden;
+}
+
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    font-size: 12px;
+}
