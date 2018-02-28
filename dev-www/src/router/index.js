@@ -28,6 +28,12 @@ const adminArticle = function(param) {
         return param(require('../components/user/article'))
     }, 'adminArticle');
 };
+// 后台标签列表
+const adminTag = function(param) {
+    return require.ensure([], function () {
+        return param(require('../components/user/tag'))
+    }, 'adminTag');
+};
 
 //路由配置 -- 路由嵌套
 export default [  //顶层路由,对应app.vue
@@ -52,8 +58,13 @@ export default [  //顶层路由,对应app.vue
         component: userAdmin
     },
     {
-        path: '/article',
+        path: '/admin/article',
         name: 'adminArticle',
         component: adminArticle
+    },
+    {
+        path: '/admin/tag',
+        name: 'adminTag',
+        component: adminTag
     }
 ]

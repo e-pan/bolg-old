@@ -11,16 +11,16 @@
     </div>
 </template>
 
-    <style lang='less'>
-        article {
-            width: 80%;
-            margin: 50px 10%;
+<style lang='less'>
+    article {
+        width: 80%;
+        margin: 50px 10%;
 
-            * {
-                margin-top: 10px;
-            }
+        * {
+            margin-top: 10px;
         }
-    </style>
+    }
+</style>
 
 <script>
 import nav from '@/components/common/nav'
