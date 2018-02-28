@@ -10,7 +10,6 @@ var bodyParser = require('body-parser');
 var schemas = require('./routes/schemas');
 
 
-
 var app = express();
 
 // view engine setup

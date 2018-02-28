@@ -1,15 +1,26 @@
 <template>
     <div v-cloak>
         <nav-e></nav-e>
-        <div>
+        <article>
             <h2>{{ title }}</h2>
             <p>发布时间：{{ createTime }}</p>
             <img v-bind:src='img'>
             <div v-html='content'></div>
-        </div>
+        </article>
         <footer-e></footer-e>
     </div>
 </template>
+
+    <style lang='less'>
+        article {
+            width: 80%;
+            margin: 50px 10%;
+
+            * {
+                margin-top: 10px;
+            }
+        }
+    </style>
 
 <script>
 import nav from '@/components/common/nav'

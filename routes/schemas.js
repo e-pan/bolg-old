@@ -105,11 +105,12 @@ router.post('/setTag', function(req, res, next) {
 });
 
 // 登录
+var userSchema = {
+    name: String,
+    type: Number
+};
 router.post('/login', function(req, res, next) {
-    console.log(req.params)
     console.log(req.query)
-    console.log(req.body)
-
     mongoose.connect(DB_url, function(err) {
         if (err) {
             console.log('getTag连接失败');
@@ -120,10 +121,10 @@ router.post('/login', function(req, res, next) {
             });
         } else {
             console.log('getTag连接成功');
-            var user = mongoose.model('user', '');
+            var user = mongoose.model('user', userSchema);
             user.findOne({
                 userName: req.query.userName,
-                passwor: req.query.passwor
+                password: req.query.password
             }, function(err, doc) {
                 //res.json(doc);
                 if (doc) {
@@ -237,7 +238,7 @@ router.post('/upload', multipartMiddleware, function(req, res) {
     let accessKey = 'JQ8ja-p6attJwQ5SzCJ7zEgmBkDFOsMlBIRbn7-4'
     let secretKey = 'HUr2NCLDx1gLVAl3xArJt2qsUwqWORxnX1AsisyL'
     let bucket = 'bolg'
-    let host = 'p3rqu34ua.bkt.clouddn.com/'
+    let host = 'http://p3rqu34ua.bkt.clouddn.com/'
     var mac = new qiniu.auth.digest.Mac(accessKey, secretKey);
     var options = {
         scope: bucket,

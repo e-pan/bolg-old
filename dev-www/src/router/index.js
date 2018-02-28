@@ -1,23 +1,32 @@
+// 首页
 const home = function(param) {
     return require.ensure([], function () {
         return param(require('../components/home'))
     }, 'home');
 };
+// 前台文章列表
 const articleDetail = function(param) {
     return require.ensure([], function () {
         return param(require('../components/articleDetail'))
     }, 'articleDetail');
 };
-
+// 后台登陆
 const userLogin = function(param) {
     return require.ensure([], function () {
         return param(require('../components/user/login'))
     }, 'userLogin');
 };
+// 后台首页
 const userAdmin = function(param) {
     return require.ensure([], function () {
         return param(require('../components/user/admin'))
     }, 'userAdmin');
+};
+// 后台文章列表
+const adminArticle = function(param) {
+    return require.ensure([], function () {
+        return param(require('../components/user/article'))
+    }, 'adminArticle');
 };
 
 //路由配置 -- 路由嵌套
@@ -41,5 +50,10 @@ export default [  //顶层路由,对应app.vue
         path: '/admin',
         name: 'userAdmin',
         component: userAdmin
+    },
+    {
+        path: '/article',
+        name: 'adminArticle',
+        component: adminArticle
     }
 ]

@@ -76,24 +76,24 @@ ul, li {
 }
 
 
-nav {
+nav.home {
     display: flex;
     height: 70px;
     line-height: 70px;
     border-bottom: 1px solid #ddd;
     justify-content: space-between;
 }
-nav .logo {
+nav.home .logo {
     flex: 1;
     justify-content: flex-start;
     padding-left: 50px;
     text-transform: uppercase;
 
 }
-nav .logo a {
+nav.home .logo a {
     font-family: "MainFont";
 }
-nav .nav {
+nav.home .nav {
     display: flex;
     flex: 1;
     justify-content: flex-end;
@@ -131,6 +131,9 @@ nav .nav {
 }
 .main .news img {
     height: 200px;
+}
+.main .news h2 {
+    cursor: pointer;
 }
 .main aside {
     flex: 2;
