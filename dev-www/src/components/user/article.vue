@@ -10,6 +10,14 @@
                 <div class="grid-content bg-purple">文章缩略图：</div>
                 <input type="file" class="el-button el-button--default" placeholder="请输入标题" @change='upload' />
             </section>
+            <section>
+                <div class="grid-content bg-purple">文章标签：</div>
+                <div class='tags'>
+                    <el-checkbox-group v-model="checkList">
+                        <el-checkbox v-for='item in tags' :label="item.name"></el-checkbox>
+                    </el-checkbox-group>
+                </div>
+            </section>
             <section >
                 <div class="grid-content bg-purple">文章内容：</div>
                 <quill-editor ref="myTextEditor" :content="content" :config="editorOption" @change="onEditorChange($event)"></quill-editor>
@@ -38,6 +46,11 @@
         }
         input[type='file'], button {
             width: 100%;
+        }
+        .tags {
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
         }
     }
     // 自定义样式
@@ -103,7 +116,9 @@ export default {
             articleTitle: '',
             articleContent: '',
             editorOption: {},
-            img: ''
+            img: '',
+            tags: [],
+            checkList: []
         }
     },
     components: {
@@ -118,6 +133,19 @@ export default {
         onEditorChange: function(event) {
             console.log(event.html)
             this.articleContent = event.html
+        },
+        // 获取标签
+        getTag() {
+            const that = this
+            this.$http({
+                method: 'post',
+                url: this.HOST + '/api/getTag',
+                params: {}
+            }).then(res => {
+                console.log(res)
+                let { data } = res;
+                if (data && data.code == 200) that.tags = data.data
+            }).catch(error => console.log(error));
         },
         upload: function (event) {
             let files = event.target.files[0]
@@ -146,7 +174,8 @@ export default {
                 params: {
                     title: that.articleTitle,
                     content: that.articleContent,
-                    img: that.img
+                    img: that.img,
+                    tag: that.checkList.join(",")
                 },
                 headers: {
                   'Content-Type': 'application/x-www-form-urlencoded'
@@ -167,11 +196,12 @@ export default {
             let msg;
             if (!this.articleTitle) {
                 msg = '请输入文章标题'
-            }else if (!this.img) {
+            } else if (!this.img) {
                 msg = '请上传文章缩略图'
-            } else {
-                if (!this.articleContent) msg = '请输入文章内容'
+            } else if (!this.articleContent) {
+                msg = '请输入文章内容'
             }
+
             if (msg) {
                 this.$alert(msg, {
                   confirmButtonText: '确定',
@@ -191,7 +221,7 @@ export default {
     },
     mounted: function () {
         this.$nextTick(function () {
-            //this.upload()
+            this.getTag()
         })
     }
 }

@@ -57,10 +57,8 @@ var DB_url = 'mongodb://localhost:27017/user';
 // tag数据插入获取
 var tagSchema = new mongoose.Schema({
     name: String,
-    type: Number
 });
 router.post('/getTag', function(req, res, next) {
-    console.log(req.body)
     mongoose.connect(DB_url, function(err) {
         if (err) {
             console.log('getTag连接失败');
@@ -83,7 +81,8 @@ router.post('/getTag', function(req, res, next) {
         }
     });
 });
-router.post('/setTag', function(req, res, next) {
+router.post('/addTag', function(req, res, next) {
+    console.log(req.query)
     mongoose.connect(DB_url, function(err) {
         if (err) {
             console.log('setTag连接失败')
@@ -91,8 +90,7 @@ router.post('/setTag', function(req, res, next) {
             console.log('setTag连接成功')
             var tag = mongoose.model('tag', tagSchema);
             new tag({
-                name: "jquery",
-                type: 2
+                name: req.query.tagName
             }).save(function(err, doc) {
                 if (err) {
 
@@ -150,15 +148,13 @@ var articleSchema = new mongoose.Schema({
     title: String,
     content: String,
     img: String,
-    createTime: String
+    createTime: String,
+    tag: String
 });
 // 插入文章
 router.post('/insertArticle', function(req, res, next) {
-    var title = req.query.title
-    var content = req.query.content
-    var img = req.query.img
-    var createTime = Date.parse(new Date())
-
+    const { title, content, img, tag, createTime = Date.parse(new Date()) } = req.query
+    console.log(tag)
     console.log(title)
     console.log(content)
     console.log(img)
@@ -173,6 +169,7 @@ router.post('/insertArticle', function(req, res, next) {
                 title: title,
                 content: content,
                 img: img,
+                tag: tag,
                 createTime: createTime
             }).save(function(err, doc) {
                 if (err) {

@@ -3,21 +3,13 @@
         <user-nav></user-nav>
         <article>
             <section>
-                <div class="grid-content bg-purple">已有标签：</div>
+                <div class="grid-content">维护标签：</div>
                 <div style="width: 100%">
                     <ul>
                         <li v-for='item in tags'>{{ item.name }}</li>
                     </ul>
+                    <el-button type="text" @click="addTag">点击打开 Message Box</el-button>
                 </div>
-            </section>
-            <section>
-                <div class="grid-content bg-purple">添加标签：</div>
-                <!-- <el-input placeholder="请输入内容" v-model="articleTitle" clearable></el-input> -->
-            </section>
-
-            <section>
-                <div></div>
-                <!-- <el-button type="primary" plain @click='validate'>提交</el-button> -->
             </section>
         </article>
         <user-footer></user-footer>
@@ -190,6 +182,32 @@ export default {
                     that.tags = data.data
                 }
             }).catch();
+        },
+        // 添加标签
+        addTag() {
+            const that = this
+            let tagName = '';
+            this.$prompt('请输入标签名', '提示', {
+              confirmButtonText: '确定',
+              cancelButtonText: '取消'
+            }).then(({ value }) => {
+                tagName = value;
+                that.$http({
+                    method: "post",
+                    url: that.HOST + '/api/addTag',
+                    params: {
+                        tagName
+                    }
+                }).then(function (res) {
+                    console.log(res);
+                }).catch();
+            }).catch(() => {
+              console.log("点击返回按钮")
+            });
+        },
+        // 删除标签
+        removeTag() {
+
         }
     },
     created:function () {
@@ -201,5 +219,4 @@ export default {
     }
 }
 </script>
-
 116 656

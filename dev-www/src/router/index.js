@@ -10,6 +10,9 @@ const articleDetail = function(param) {
         return param(require('../components/articleDetail'))
     }, 'articleDetail');
 };
+// 前台关于我
+const about = param => require.ensure([], () => param(require('../components/about')), 'about')
+
 // 后台登陆
 const userLogin = function(param) {
     return require.ensure([], function () {
@@ -46,6 +49,11 @@ export default [  //顶层路由,对应app.vue
         path: '/articleDetail',
         name: 'articleDetail',
         component: articleDetail
+    },
+    {
+        path: '/about',
+        name: 'about',
+        component: about
     },
     {
         path: '/login',
