@@ -14,7 +14,11 @@
                 <div class="grid-content bg-purple">文章标签：</div>
                 <div class='tags'>
                     <el-checkbox-group v-model="checkList">
+<<<<<<< HEAD:view/src/components/user/article.vue
                         <!-- <el-checkbox v-for='item in tags' :label="item.name"></el-checkbox> -->
+=======
+                        <el-checkbox v-for='item in tags' :label="item.name"></el-checkbox>
+>>>>>>> 27eabd35eb936f2ef33e1a694aa1b6489cfc19dc:dev-www/src/components/user/article.vue
                     </el-checkbox-group>
                 </div>
             </section>

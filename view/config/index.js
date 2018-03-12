@@ -14,7 +14,7 @@ module.exports = {
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
-    port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    port: 80, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,
     notifyOnErrors: true,
@@ -41,7 +41,11 @@ module.exports = {
     index: path.resolve(__dirname, '../dist/index.html'),
 
     // Paths
+<<<<<<< HEAD:view/config/index.js
     assetsRoot: path.resolve(__dirname, '../dist'),
+=======
+    assetsRoot: path.resolve(__dirname, '../public'),
+>>>>>>> 27eabd35eb936f2ef33e1a694aa1b6489cfc19dc:dev-www/config/index.js
     assetsSubDirectory: 'static',
     assetsPublicPath: './',
 
