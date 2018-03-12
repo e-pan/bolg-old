@@ -49,9 +49,9 @@ module.exports = {
     index: path.resolve(__dirname, '../../views/index.html'),
 
     // Paths
-    assetsRoot: path.resolve(__dirname, '../../public'),
+    assetsRoot: path.resolve(__dirname, '../public'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: './',
 
     /**
      * Source Maps
