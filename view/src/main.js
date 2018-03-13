@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 //import mint from 'mint-ui'              // 基于 Vue.js 的移动端组件库
-import ElementUI from 'element-ui'      // 饿了么UI
+//import ElementUI from 'element-ui'      // 饿了么UI
 import axios from 'axios'               // 异步接口
 
 import App from './App'                 // 入口页面
@@ -22,7 +22,7 @@ import '../static/js/e-pan.js'
 // 0. 如果使用模块化机制编程，导入Vue和VueRouter，要调用 Vue.use(VueRouter)
 Vue.use(VueRouter)
 //Vue.use(mint)
-Vue.use(ElementUI)
+//Vue.use(ElementUI)
 Vue.use(vueQuillEditor)
 
 

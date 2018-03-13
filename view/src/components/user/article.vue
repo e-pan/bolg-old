@@ -1,39 +1,33 @@
 <template>
-    <el-container>
+    <section>
         <user-nav></user-nav>
         <article>
             <section>
                 <div class="grid-content bg-purple">文章标题：</div>
-                <el-input placeholder="请输入内容" v-model="articleTitle" clearable></el-input>
+                <input placeholder="请输入内容" v-model="articleTitle" clearable />
             </section>
             <section>
                 <div class="grid-content bg-purple">文章缩略图：</div>
-                <input type="file" class="el-button el-button--default" placeholder="请输入标题" @change='upload' />
+                <input type="file" placeholder="请输入标题" @change='upload' />
             </section>
             <section>
                 <div class="grid-content bg-purple">文章标签：</div>
                 <div class='tags'>
-                    <el-checkbox-group v-model="checkList">
-<<<<<<< HEAD:view/src/components/user/article.vue
-                        <!-- <el-checkbox v-for='item in tags' :label="item.name"></el-checkbox> -->
-=======
-                        <el-checkbox v-for='item in tags' :label="item.name"></el-checkbox>
->>>>>>> 27eabd35eb936f2ef33e1a694aa1b6489cfc19dc:dev-www/src/components/user/article.vue
-                    </el-checkbox-group>
+                    <ul>
+                        <li v-for='item in tags'>{{ item.name }}</li>
+                    </ul>
                 </div>
             </section>
             <section >
                 <div class="grid-content bg-purple">文章内容：</div>
                 <quill-editor ref="myTextEditor" :content="content" :config="editorOption" @change="onEditorChange($event)"></quill-editor>
             </section>
-            <br style="clear: both;" />
             <section>
-                <div></div>
-                <el-button type="primary" plain @click='validate'>提交</el-button>
+                <button  @click='validate'>提交</button>
             </section>
         </article>
         <user-footer></user-footer>
-    </el-container>
+    </section>
 </template>
 
 <style lang='less'>
@@ -59,52 +53,12 @@
     }
     // 自定义样式
 
-  .el-header, .el-footer {
-    background-color: #B3C0D1;
-    color: #333;
-    text-align: center;
-    line-height: 60px;
-    width: 100%;
-  }
-
-  .el-aside {
-    background-color: #D3DCE6;
-    color: #333;
-    text-align: center;
-    line-height: 200px;
-  }
-
-  .el-main {
-    background-color: #E9EEF3;
-    color: #333;
-    text-align: center;
-    line-height: 160px;
-    width: 100%;
-  }
-
-  body > .el-container {
-    margin-bottom: 40px;
-  }
-  .el-container {
-    flex-direction: column;
-  }
-
-  .el-container:nth-child(5) .el-aside,
-  .el-container:nth-child(6) .el-aside {
-    line-height: 260px;
-  }
-
-  .el-container:nth-child(7) .el-aside {
-    line-height: 320px;
-  }
-
   /**/
   .ql-editor.ql-blank {
     min-height: 300px;
   }
 </style>
 <script>
-import ElementUI from 'element-ui'
 import userFooter from '@/components/common/userFooter'
 import userNav from '@/components/common/userNav'
 import { quillEditor } from 'vue-quill-editor'

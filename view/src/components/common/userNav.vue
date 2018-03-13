@@ -1,17 +1,12 @@
 <template>
-    <el-header >
-        <div class="el-row">
-            <div class="el-col el-col-6">fuzhongkuo.com</div>
-            <div class="el-col el-col-18">
-                <nav class='admin'>
+    <header >
+        <nav class='admin'>
                     <a @click='adminArtile'>Article</a>
                     <a @click='tag'>Tag</a>
                     <a>待定</a>
                     <a>待定</a>
                 </nav>
-            </div>
-        </div>
-    </el-header>
+    </header>
 </template>
 <style lang="less">
     nav.admin {

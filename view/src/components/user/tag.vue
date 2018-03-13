@@ -1,5 +1,5 @@
 <template>
-    <el-container>
+    <section>
         <user-nav></user-nav>
         <article>
             <section>
@@ -8,12 +8,12 @@
                     <ul>
                         <li v-for='item in tags'>{{ item.name }}</li>
                     </ul>
-                    <el-button type="text" @click="addTag">点击打开 Message Box</el-button>
+                    <button type="text" @click="addTag">点击打开 Message Box</button>
                 </div>
             </section>
         </article>
         <user-footer></user-footer>
-    </el-container>
+    </section>
 </template>
 
 <style lang='less'>
@@ -34,52 +34,8 @@
     }
     // 自定义样式
 
-  .el-header, .el-footer {
-    background-color: #B3C0D1;
-    color: #333;
-    text-align: center;
-    line-height: 60px;
-    width: 100%;
-  }
-
-  .el-aside {
-    background-color: #D3DCE6;
-    color: #333;
-    text-align: center;
-    line-height: 200px;
-  }
-
-  .el-main {
-    background-color: #E9EEF3;
-    color: #333;
-    text-align: center;
-    line-height: 160px;
-    width: 100%;
-  }
-
-  body > .el-container {
-    margin-bottom: 40px;
-  }
-  .el-container {
-    flex-direction: column;
-  }
-
-  .el-container:nth-child(5) .el-aside,
-  .el-container:nth-child(6) .el-aside {
-    line-height: 260px;
-  }
-
-  .el-container:nth-child(7) .el-aside {
-    line-height: 320px;
-  }
-
-  /**/
-  .ql-editor.ql-blank {
-    min-height: 300px;
-  }
 </style>
 <script>
-import ElementUI from 'element-ui'
 import userFooter from '@/components/common/userFooter'
 import userNav from '@/components/common/userNav'
 
@@ -98,77 +54,6 @@ export default {
 
     },
     methods: {
-        // onEditorChange: function(event) {
-        //     console.log(event.html)
-        //     this.articleContent = event.html
-        // },
-        // upload: function (event) {
-        //     let files = event.target.files[0]
-        //     var formData = new FormData()
-        //     formData.append('files', files)
-
-        //     let that = this
-        //     this.$http.post(this.HOST + '/api/upload', formData, {
-        //       headers: {
-        //         'Content-Type': 'multipart/form-data'
-        //       }
-        //     }).then((response) => {
-        //         var datas = response.data
-        //         if (datas.code == 200) {
-        //             that.img = datas.data
-        //         }
-        //     }).catch(error => {
-
-        //     });
-        // },
-        // submit: function () {
-        //     let that = this
-        //     this.$http({
-        //         method: 'post',
-        //         url: this.HOST + '/api/insertArticle',
-        //         params: {
-        //             title: that.articleTitle,
-        //             content: that.articleContent,
-        //             img: that.img
-        //         },
-        //         headers: {
-        //           'Content-Type': 'application/x-www-form-urlencoded'
-        //         }
-        //     }).then(function(response) {
-        //         var datas = response.data
-        //         console.log(datas)
-        //         if (datas.code == 200) {
-        //             //that.tags = datas.data
-        //         }
-        //         //that.$router.push('/register');
-        //     }).catch(function(error) {
-        //         //console.log(error)
-        //     })
-        // },
-        // validate() {
-        //     // 验证
-        //     let msg;
-        //     if (!this.articleTitle) {
-        //         msg = '请输入文章标题'
-        //     }else if (!this.img) {
-        //         msg = '请上传文章缩略图'
-        //     } else {
-        //         if (!this.articleContent) msg = '请输入文章内容'
-        //     }
-        //     if (msg) {
-        //         this.$alert(msg, {
-        //           confirmButtonText: '确定',
-        //           callback: action => {
-        //             this.$message({
-        //               type: 'info',
-        //               message: `action: ${ action }`
-        //             });
-        //           }
-        //         });
-        //     } else {
-        //         this.submit()
-        //     }
-        // }
 
         getTag() {
             var that = this

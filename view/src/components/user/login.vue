@@ -7,13 +7,13 @@
             <input type="text" name="password" placeholder="密码" v-model='password' />
             <button :disabled='!userName || !password' @click='login'>登录</button>
         </div>
-        <el-dialog title="提示" :visible.sync="centerDialogVisible" width="30%" center>
+        <!-- <el-dialog title="提示" :visible.sync="centerDialogVisible" width="30%" center>
             <span>{{ msg }}</span>
             <span slot="footer" class="dialog-footer">
                 <el-button @click="centerDialogVisible = false">取 消</el-button>
                 <el-button type="primary" @click="centerDialogVisible = false">确 定</el-button>
             </span>
-        </el-dialog>
+        </el-dialog> -->
     </div>
 </template>
 
@@ -66,7 +66,6 @@
     }
 </style>
 <script>
-import ElementUI from 'element-ui'
 export default {
     name: 'login',
     data () {
