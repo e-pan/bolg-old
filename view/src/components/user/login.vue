@@ -1,5 +1,5 @@
 <template>
-    <div class='login' v-cloak>
+    <section class='login' v-cloak> 
         <div class="box">
             <span>Username</span>
             <input type="text" name="userName" placeholder="登录名" v-model='userName' />
@@ -7,14 +7,7 @@
             <input type="text" name="password" placeholder="密码" v-model='password' />
             <button :disabled='!userName || !password' @click='login'>登录</button>
         </div>
-        <!-- <el-dialog title="提示" :visible.sync="centerDialogVisible" width="30%" center>
-            <span>{{ msg }}</span>
-            <span slot="footer" class="dialog-footer">
-                <el-button @click="centerDialogVisible = false">取 消</el-button>
-                <el-button type="primary" @click="centerDialogVisible = false">确 定</el-button>
-            </span>
-        </el-dialog> -->
-    </div>
+    </section>
 </template>
 
 <style lang="less">

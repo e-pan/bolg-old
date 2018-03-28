@@ -4,26 +4,41 @@
             <a href='/'>fuzhongkuo.com</a>
         </div>
         <div class='nav'>
-            <a href=''>网站首页111</a>
-            <a href='news.html'>前端技术</a>
-            <a href='live.html'>艺术生活</a>
-            <a href='about.html'>关于我</a>
-            <a @click='admin'>后台管理</a>
+            <a @click='nav(item)' v-for='item in navs'>
+                {{ item.text }}
+            </a>
         </div>
     </nav>
 </template>
 <script>
-    
     export default {
-        name: 'nav',
+        name: 'nav-e',
         data() {
-            return {}
+            return {
+                navs: [
+                    {
+                        text: '网站首页',
+                        id: '/',
+                    },
+                    {
+                        text: '文章列表',
+                        id: 'article',
+                    },
+                    {
+                        text: '关于我',
+                        id: 'about',
+                    },
+                    {
+                        text: '后台管理',
+                        id: 'admin',
+                    }
+                ]
+            }
         },
         methods: {
-            admin() {
-                this.$router.push('/admin')
+            nav(item) {
+                this.$router.push(item.id)
             }
         }
     }
-
 </script>

@@ -5,6 +5,8 @@ const home = function(param) {
     }, 'home');
 };
 // 前台文章列表
+const article = param => require.ensure([], () => param(require('../components/article')), 'article')
+// 前台文章列表详情
 const articleDetail = function(param) {
     return require.ensure([], function () {
         return param(require('../components/articleDetail'))
@@ -49,6 +51,11 @@ export default [  //顶层路由,对应app.vue
         path: '/home',
         name: 'home',
         component: home
+    },
+    {
+        path: '/article',
+        name: 'article',
+        component: article,
     },
     {
         path: '/articleDetail',

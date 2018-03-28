@@ -10,7 +10,7 @@ var router = express.Router();
 var multipartMiddleware = multipart();
 
 
-var DB_url = 'mongodb://localhost:27017/user';
+var DB_url = 'mongodb://localhost:27017/bolg';
 
 // var options = {
 //     // -数据库设置
@@ -85,9 +85,9 @@ router.post('/addTag', function(req, res, next) {
     console.log(req.query)
     mongoose.connect(DB_url, function(err) {
         if (err) {
-            console.log('setTag连接失败')
+            console.log('addTag连接失败')
         } else {
-            console.log('setTag连接成功')
+            console.log('addTag连接成功')
             var tag = mongoose.model('tag', tagSchema);
             new tag({
                 name: req.query.tagName
@@ -98,6 +98,35 @@ router.post('/addTag', function(req, res, next) {
                     res.send('插入成功');
                 }
             });
+        }
+    });
+});
+// 删除标签
+router.post('/removeTag', function (req, res) {
+    console.log(req.query)
+    let { _id } = req.query
+    mongoose.connect(DB_url, function (err) {
+        if (err) {
+            console.log('removeTag连接失败')
+        } else {
+            console.log('removeTag连接成功')
+            let tag = mongoose.model('tag', tagSchema)
+            console.log(_id)
+            tag.remove({_id : _id}, function (err, doc) {
+                if (doc) {
+                    res.setHeader('Content-Type', 'application/json');
+                    res.status(200).send({
+                        code: 200,
+                        data: doc
+                    });
+                } else {
+                    res.send({
+                        code: '500',
+                        msg: "删除失败",
+                        data: doc
+                    });
+                }
+            }).exec();
         }
     });
 });

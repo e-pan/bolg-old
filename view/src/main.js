@@ -13,7 +13,7 @@ import vueQuillEditor from 'vue-quill-editor' // 引入富文本工具
 
 
 
-import 'element-ui/lib/theme-chalk/index.css' // 饿了么UI css
+//import 'element-ui/lib/theme-chalk/index.css' // 饿了么UI css
 import '../static/css/e-pan.css'
 import '../static/js/e-pan.js'
 
@@ -38,7 +38,7 @@ const router = new VueRouter({
     //history: 依赖 HTML5 History API 和服务器配置。查看 HTML5 History 模式.
     //因为router默认使用“hash”,所以设置与否浏览器的URL显示像这样(http://localhost:8000/#/firsts/first ),
     //mode设置为"history"时，浏览器URL显示为(http://localhost:8000/firsts/first),设置“history”后链接中没有#
-    mode: 'hash',
+    mode: 'history',
     strict: process.env.NODE_ENV !== 'production',
     routes
 })

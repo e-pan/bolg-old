@@ -3,10 +3,15 @@
     margin: 0 auto;
     font-size: 14px;
 }
+input {
+    outline: none;
+    background: transparent;
+}
 a {
     color: #000;
     text-decoration: none;
     transition: all .5s;
+    cursor: pointer;
 }
 a:hover {
     color: #825cff;
@@ -91,6 +96,7 @@ nav.home .logo {
 }
 nav.home .logo a {
     font-family: "MainFont";
+
 }
 nav.home .nav {
     display: flex;
@@ -163,4 +169,12 @@ footer {
     height: 50px;
     line-height: 50px;
     font-size: 12px;
+}
+
+
+/* 用户后台样式 */
+.u-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 500px;
 }

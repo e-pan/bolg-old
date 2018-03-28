@@ -1,34 +1,55 @@
 <template>
-    <div v-cloak>
+    <section id='article-detail' v-cloak>
         <nav-e></nav-e>
-        <article>
+        <article class='u-wrap article-detail'>
             <h2>{{ title }}</h2>
-            <p>发布时间：{{ createTime }}</p>
+            <div class='tag'>
+                <span>发布时间：{{ createTime | formatDate }}</span>
+                <span v-if='tag'>标签：{{ tag }}</span>
+            </div>
             <img v-bind:src='img'>
-            <div v-html='content'></div>
+            <div v-html='content' class='content'></div>
         </article>
         <footer-e></footer-e>
-    </div>
+    </section>
 </template>
 
 <style lang='less'>
-    article {
-        width: 80%;
-        margin: 50px 10%;
-
-        * {
-            margin-top: 10px;
-        }
+    .article-detail {
+        background: #f5f5f5;
+        padding: 10px 30px;
+        margin: 20px auto;
+    }
+    h2 {
+        margin-top: 20px;
+        font-size: 16px;
+    }
+    .tag {
+        margin-top: 20px;
+        color: #666;
+        display: block;
+    }
+    img {
+        max-width: 400px;
+        border: 1px solid #ddd;
+        margin-top: 20px;
+    }
+    p {
+        text-indent: 2em;
+        line-height: 30px;
+    }
+    .content {
+        margin-top: 20px;
     }
 </style>
 
 <script>
 import nav from '@/components/common/nav'
 import footer from '@/components/common/footer'
-import { getQueryString } from '../../static/js/e-pan'
+import { getQueryString, formatDay } from '../../static/js/e-pan'
 
 export default {
-    name: 'home',
+    name: 'article-detail',
     data () {
         return {
             id: '',
@@ -59,6 +80,8 @@ export default {
                     that.content = datas.data.content
                     that.img = datas.data.img
                     that.createTime = datas.data.createTime
+
+                    that.tag = datas.data.tag
                 }
             }).catch(function(error) {
                 //console.log(error)
@@ -75,6 +98,9 @@ export default {
                 this.getDetail()
             }
         })
+    },
+    filters: {
+        formatDate: (value) => formatDay(Number(value), 'yyyy-MM-dd hh:mm')
     }
 }
 </script>

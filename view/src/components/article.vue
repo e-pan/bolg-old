@@ -1,182 +1,94 @@
 <template>
-    <div v-cloak>
-        <div class="banner">
-            <div>
-                <img src="./../images/logo.png" class='logo' />
-            </div>
-            <div class='share'>
-                <ul>
-                    <li>
-                        <a href="https://github.com/e-pan" target="_blank">
-                            <img src='./../images/icon/github.png' alt='github' />
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/e-pan" target="_blank">
-                            <img src='./../images/icon/github-h.png' alt='github' />
-                        </a>
-                    </li>
-                </ul>
-                <ul>
-                    <li>
-                        <img src='./../images/icon/weibo.png' alt='微博' />
-                    </li>
-                    <li>
-                        <img src='./../images/icon/weibo-h.png' alt='微博' />
-                    </li>
-                </ul>
-                <ul>
-                    <li>
-                        <img src='./../images/icon/QQ.png' alt='QQ' />
-                    </li>
-                    <li>
-                        <img src='./../images/icon/QQ-h.png' alt='QQ' />
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!-- <nav>
-            <div class='logo'>
-                <a href='/'>fuzhongkuo.com</a>
-            </div>
-            <div class='nav'>
-                <a href=''>网站首页</a>
-                <a href='news.html'>前端技术</a>
-                <a href='live.html'>艺术生活</a>
-                <a href='about.html'>关于我</a>
-            </div>
-        </nav> -->
+    <section v-cloak>
         <nav-e></nav-e>
-        <div class='main wrap'>
-            <div class='news'>
-                <section v-for='(item, index) in articles'>
-                    <h2>
-                        <a @click="articleDetail(item)">{{ item.title }}</a>
-                    </h2>
-                    <p class='tag'>时间：{{ item.createTime }}    浏览：200  评论：20</p>
-                    <img src='./../images/test/pic-1.png' v-bind:src='item.img'>
-                    <p v-html='item.content'></p>
-                </section>
-            </div>
-            <aside>
-                <article class='tag'>
-                    <h3>分类标签</h3>
-                    <div>
-                        <a href='' v-for='item in tags'>{{ item.type }}{{ item.name }}</a>
-                    </div>
-                </article>
-                <article class='message'>
-                    <h3>最新留言</h3>
-                    <ul>
-                        <li>
-                            <span>e-pan：</span>
-                            <a href=''>关于使用HTML5 canvas制作涂鸦板的方法？</a>
-                        </li>
-                        <li>
-                            <span>e-pan：</span>
-                            <a href=''>关于使用HTML5 canvas制作涂鸦板的方法？</a>
-                        </li>
-                        <li>
-                            <span>e-pan：</span>
-                            <a href=''>关于使用HTML5 canvas制作涂鸦板的方法？</a>
-                        </li>
-                        <li>
-                            <span>e-pan：</span>
-                            <a href=''>关于使用HTML5 canvas制作涂鸦板的方法？</a>
-                        </li>
-                        <li>
-                            <span>e-pan：</span>
-                            <a href=''>关于使用HTML5 canvas制作涂鸦板的方法？</a>
-                        </li>
-                        <li>
-                            <span>e-pan：</span>
-                            <a href=''>关于使用HTML5 canvas制作涂鸦板的方法？</a>
-                        </li>
-                        <li>
-                            <span>e-pan：</span>
-                            <a href=''>关于使用HTML5 canvas制作涂鸦板的方法？</a>
-                        </li>
-                        <li>
-                            <span>e-pan：</span>
-                            <a href=''>关于使用HTML5 canvas制作涂鸦板的方法？</a>
-                        </li>
-                    </ul>
-                </article>
-            </aside>
-        </div>
+        <section class='u-wrap article'>
+            <h2>文章列表</h2>
+            <ul>
+                <li v-for='(item, index) in articles' @click='detail(item)'>
+                    <span>{{ index + 1 }}.</span>
+                    <span>{{ item.title }}...</span>
+                    <span class='time'>发布时间：{{ item.createTime | formatDate }}</span>
+                </li>
+            </ul>
+        </section>
         <footer-e></footer-e>
-    </div>
+    </section>
 </template>
+<style lang='less'>
+    .article {
+        background: #f5f5f5;
+        padding: 10px 30px;
+        margin: 20px auto;
 
-<script>
-import nav from '@/components/common/nav'
-import footer from '@/components/common/footer'
-export default {
-    name: 'home',
-    data () {
-        return {
-            tags: [],
-            articles: []
+        h2 {
+            height: 50px;
+            line-height: 50px;
+            border-bottom: 1px solid #ddd;
         }
-    },
-    components: {
-        'nav-e': nav,
-        'footer-e': footer
-    },
-    methods: {
-        setPage: function () {
-            var windowH = window.innerHeight
-            var windwoW = document.body.scrollWidth
-            document.querySelector(".banner").style.height = windowH + "px"
-        },
-        getTag: function () {
-            let that = this
-            this.$http({
-                method: 'post',
-                url: this.HOST + '/api/getTag',
-                params: {}
-            }).then(function(response) {
-                var datas = response.data
-                console.log(datas)
-                if (datas.code == 200) {
-                    that.tags = datas.data
-                }
-                //that.$router.push('/register');
-            }).catch(function(error) {
-                //console.log(error)
-            })
-        },
-        getArticleList: function () {
-            let that = this
-            this.$http({
-                method: 'post',
-                url: this.HOST + '/api/getArticleList',
-                params: {}
-            }).then(function(response) {
-                var datas = response.data
-                console.log(datas)
-                if (datas.code == 200) {
-                    that.articles = datas.data
-                }
-                //that.$router.push('/register');
-            }).catch(function(error) {
-                //console.log(error)
-            })
-        },
-        articleDetail: function (item) {
-            console.log(item)
-            this.$router.push('/articleDetail?id='+ item._id);
-        }
-    },
-    created:function () {
+        li {
+            height: 50px;
+            line-height: 50px;
+            border-bottom: 1px dotted #ddd;
+            cursor: pointer;
+            padding: 0 20px;
 
-    },
-    mounted: function () {
-        this.$nextTick(function () {
-            this.setPage()
-            this.getTag()
-            this.getArticleList()
-        })
+            &:hover {
+                background: #fff;
+            }
+            .time {
+                color: #666;
+                padding-left: 30px;
+                font-size: 12px;
+                float: right;
+            }
+        }
     }
-}
+</style>
+<script>
+    import nav from '@/components/common/nav'
+    import footer from '@/components/common/footer'
+    import { formatDay } from '../../static/js/e-pan'
+    export default {
+        name: 'articles',
+        data() {
+            return {
+                articles: []
+            }
+        },
+        components: {
+            'nav-e': nav,
+            'footer-e': footer
+        },
+        methods: {
+            // 获取文章列表
+            getArticleList() {
+                this.$http({
+                    method: 'post',
+                    url: this.HOST + '/api/getArticleList',
+                    params: {}
+                }).then((res) => {
+                    if (res && res.status == 200) {
+                        this.articles = res.data.data
+                    }
+                }).catch((err) => {
+                    alert(err);
+                });
+            },
+            // 进入文章详情
+            detail: function (item) {  //箭头函数报错 Cannot read property 'push' of undefined
+                this.$router.push('/articleDetail?id='+ item._id)
+            }
+        },
+        created : () => {
+
+        },
+        mounted: function () {
+            this.$nextTick(() => {
+                this.getArticleList()
+            })
+        },
+        filters: {
+            formatDate: (value) => formatDay(Number(value), 'yyyy-MM-dd hh:mm')
+        }
+    }
 </script>

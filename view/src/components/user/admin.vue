@@ -1,13 +1,20 @@
 <template>
-
-       <section>
-            <user-nav></user-nav>
-        欢迎进入后台管理系统！
+   <section id='u-home' v-cloak>
+        <user-nav></user-nav>
+        <section class='u-wrap u-home'>
+            欢迎进入后台管理系统！
+        </section>
         <user-footer></user-footer>
-       </section>
-
+   </section>
 </template>
-
+<style lang='less'>
+    .u-home {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 40px;
+    }
+</style>
 <script>
 import userFooter from '@/components/common/userFooter'
 import userNav from '@/components/common/userNav'

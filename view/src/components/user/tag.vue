@@ -1,39 +1,68 @@
 <template>
-    <section>
+    <section id='u-tag' v-cloak> 
         <user-nav></user-nav>
-        <article>
-            <section>
-                <div class="grid-content">维护标签：</div>
-                <div style="width: 100%">
-                    <ul>
-                        <li v-for='item in tags'>{{ item.name }}</li>
-                    </ul>
-                    <button type="text" @click="addTag">点击打开 Message Box</button>
-                </div>
-            </section>
-        </article>
+        <section class='u-wrap'>
+            <div class='tag-item'>
+                <p class="tit">
+                    <span>我的标签</span>
+                    <em @click='addTag'>添加+</em>
+                </p>
+                <ul class='tag-list'>
+                    <li v-for='tag in tags'>
+                        <em>{{ tag.name }}</em>
+                        <i @click='removeTag(tag)'>X</i>
+                    </li>
+                </ul>
+            </div>
+        </section>
         <user-footer></user-footer>
     </section>
 </template>
 
 <style lang='less'>
-    // 自定义样式
-    article section {
-        background: #fff;
-        display: flex;
-        margin: 20px 0;
-
-        div {
-            min-width: 100px;
-            align-items: center;
-            justify-content: center;
-        }
-        input[type='file'], button {
+    .tag-item {
+        background: #f5f5f5;
+        padding: 10px 30px;
+        margin-top: 20px;
+        .tit {
+            display: inline-block;
+            border-bottom: 1px solid #ccc;
+            height: 50px;
+            line-height: 50px;
             width: 100%;
+
+            span {
+                float: left;
+            }
+            em {
+                float: right;
+                cursor: pointer;
+            }
+        }
+
+        .tag-list {
+            display: flex;
+            justify-content: flex-start;
+            margin-top: 20px;
+            flex-wrap: wrap;
+
+            li {
+                background: #fff;
+                position: relative;
+                padding: 10px 30px;
+
+                i {
+                    position: absolute;
+                    top: -5px;
+                    right: -2px;
+                    font-size: 14px;
+                    color: #f00;
+                    font-style: normal;
+                    cursor: pointer;
+                }
+            }
         }
     }
-    // 自定义样式
-
 </style>
 <script>
 import userFooter from '@/components/common/userFooter'
@@ -54,7 +83,7 @@ export default {
 
     },
     methods: {
-
+        // 获取标签
         getTag() {
             var that = this
             this.$http({
@@ -71,12 +100,8 @@ export default {
         // 添加标签
         addTag() {
             const that = this
-            let tagName = '';
-            this.$prompt('请输入标签名', '提示', {
-              confirmButtonText: '确定',
-              cancelButtonText: '取消'
-            }).then(({ value }) => {
-                tagName = value;
+            let tagName = prompt('添加一个新的标签，请输入标签名', '')
+            if (tagName) {
                 that.$http({
                     method: "post",
                     url: that.HOST + '/api/addTag',
@@ -85,14 +110,33 @@ export default {
                     }
                 }).then(function (res) {
                     console.log(res);
+                    if (res.status == 200) {
+                        that.getTag()
+                    } else {
+                        alert(res.data)
+                    }
                 }).catch();
-            }).catch(() => {
-              console.log("点击返回按钮")
-            });
+            } else {
+                alert('请输入标签名！')
+            }
         },
         // 删除标签
-        removeTag() {
-
+        removeTag(tag) {
+            let { _id }  = tag
+            console.log(_id)
+            this.$http({
+                method: "post",
+                url: this.HOST + '/api/removeTag',
+                params: {
+                    _id
+                }
+            }).then(function (res) {
+                if (res.code == 200) {
+                    this.getTag()
+                } else {
+                    alert(res.msg)
+                }
+            }).catch();
         }
     },
     created:function () {
