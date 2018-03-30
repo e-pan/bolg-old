@@ -65,7 +65,7 @@ router.post('/getTag', function(req, res, next) {
             res.send({
                 code: '500',
                 msg: "获取数据失败",
-                data: doc
+                data: err
             });
         } else {
             console.log('getTag连接成功');

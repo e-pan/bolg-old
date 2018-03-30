@@ -45,7 +45,11 @@ export default [  //顶层路由,对应app.vue
     {
         path: '/',
         name: 'home',
-        component: home
+        component: home,
+        meta: {
+            title: '首页',
+            content: 'disable'
+        }
     },
     {
         path: '/home',

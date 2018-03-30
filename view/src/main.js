@@ -28,7 +28,7 @@ Vue.use(vueQuillEditor)
 
 // 将API方法绑定到全局
 Vue.prototype.$http = axios
-Vue.prototype.HOST = '/api'
+Vue.prototype.HOST = 'http://www.fuzhongkuo.com'
 Vue.config.productionTip = false
 
 
@@ -38,9 +38,22 @@ const router = new VueRouter({
     //history: 依赖 HTML5 History API 和服务器配置。查看 HTML5 History 模式.
     //因为router默认使用“hash”,所以设置与否浏览器的URL显示像这样(http://localhost:8000/#/firsts/first ),
     //mode设置为"history"时，浏览器URL显示为(http://localhost:8000/firsts/first),设置“history”后链接中没有#
-    mode: 'history',
+    mode: 'hash',
     strict: process.env.NODE_ENV !== 'production',
     routes
+})
+
+/* 路由发生变化修改页面title */
+router.beforeEach((to, from, next) => {
+    let head = document.getElementsByTagName('head');
+    let meta = document.createElement('meta');
+    meta.content = to.meta.content;
+    head[0].appendChild(meta)
+    
+  if (to.meta.title) {
+    document.title = to.meta.title
+  }
+  next()
 })
 
 // 2.创建和挂载根实例

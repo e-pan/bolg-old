@@ -2,10 +2,9 @@
     <header>
         <h2 class='logo'>fuzhongkuo.com</h2>
         <nav class='admin'>
-            <a @click='adminArtile'>Article</a>
-            <a @click='tag'>Tag</a>
-            <a>待定</a>
-            <a>待定</a>
+            <a @click='nav(item)' v-for='item in navs'>
+                {{ item.text }}
+            </a>
         </nav>
     </header>
 </template>
@@ -35,14 +34,26 @@
     export default {
         name: "userNav", // 可以省略
         data() {
-            return {} // 不能省略
+            return {
+                navs: [
+                    {
+                        text: '文章发布',
+                        id: '/admin/article',
+                    },
+                    {
+                        text: '标签维护',
+                        id: '/admin/tag',
+                    },
+                    {
+                        text: '主页',
+                        id: '/',
+                    }
+                ]
+            } // 不能省略
         },
         methods: {
-            adminArtile() {
-                this.$router.push('/admin/article')
-            },
-            tag() {
-                this.$router.push('/admin/tag')
+            nav(item) {
+                this.$router.push(item.id)
             }
         },
         mounted() {

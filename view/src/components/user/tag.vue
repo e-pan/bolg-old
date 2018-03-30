@@ -99,10 +99,11 @@ export default {
         },
         // 添加标签
         addTag() {
+            console.log(this.HOST)
             const that = this
             let tagName = prompt('添加一个新的标签，请输入标签名', '')
             if (tagName) {
-                that.$http({
+                this.$http({
                     method: "post",
                     url: that.HOST + '/api/addTag',
                     params: {
@@ -111,7 +112,7 @@ export default {
                 }).then(function (res) {
                     console.log(res);
                     if (res.status == 200) {
-                        that.getTag()
+                        this.getTag()
                     } else {
                         alert(res.data)
                     }
