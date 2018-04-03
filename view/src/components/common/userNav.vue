@@ -1,38 +1,18 @@
 <template>
-    <header>
-        <h2 class='logo'>fuzhongkuo.com</h2>
-        <nav class='admin'>
+    <nav class='menu'>
+        <div class='logo'>
+            <a href='/'>fuzhongkuo.com</a>
+        </div>
+        <div class='nav'>
             <a @click='nav(item)' v-for='item in navs'>
                 {{ item.text }}
             </a>
-        </nav>
-    </header>
+        </div>
+    </nav>
 </template>
-<style lang="less">
-    h2.logo {
-        float: left;
-        height: 50px;
-        line-height: 50px;
-        padding-left: 20px;
-    }
-    nav.admin {
-        height: 50px;
-        line-height: 50px;
-        background: #ddd;
-        text-align: right;
-
-        a {
-            display: inline-block;
-            padding: 0 50px;
-        }
-        a:hover {
-            color: #825cff;
-        }
-    }
-</style>
 <script>
     export default {
-        name: "userNav", // 可以省略
+        name: 'nav-e', 
         data() {
             return {
                 navs: [
@@ -49,17 +29,12 @@
                         id: '/',
                     }
                 ]
-            } // 不能省略
+            }
         },
         methods: {
             nav(item) {
                 this.$router.push(item.id)
             }
-        },
-        mounted() {
-            this.$nextTick(function () {
-
-            })
         }
     }
 </script>

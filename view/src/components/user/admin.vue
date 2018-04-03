@@ -1,22 +1,15 @@
 <template>
    <section id='u-home' v-cloak>
         <user-nav></user-nav>
-        <section class='u-wrap u-home'>
+        <section class='wrap u-home min-box'>
             欢迎进入后台管理系统！
         </section>
-        <user-footer></user-footer>
+        <footer-e></footer-e>
    </section>
 </template>
-<style lang='less'>
-    .u-home {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 40px;
-    }
-</style>
+<style lang='less' src='../../../static/less/e-pan.less'></style>
 <script>
-import userFooter from '@/components/common/userFooter'
+import footer from '@/components/common/footer'
 import userNav from '@/components/common/userNav'
 
 export default {
@@ -28,7 +21,7 @@ export default {
     },
     components: {
         "user-nav": userNav,
-        "user-footer": userFooter
+        "footer-e": footer
     },
     mounted() {
 

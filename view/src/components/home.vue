@@ -1,6 +1,6 @@
 <template>
-    <div v-cloak>
-        <div class="banner">
+    <div id='home' v-cloak>
+        <div class="banner" v-show='show'>
             <div>
                 <img src="../../static/images/logo.png" class='logo' />
             </div>
@@ -19,46 +19,52 @@
                 </ul>
                 <ul>
                     <li>
-                        <img src='../../static/images/icon/weibo.png' alt='微博' />
+                        <a href='https://weibo.com/fzkuo' target="_blank">
+                            <img src='../../static/images/icon/weibo.png' alt='微博' />
+                        </a>
                     </li>
                     <li>
-                        <img src='../../static/images/icon/weibo-h.png' alt='微博' />
+                        <a href='https://weibo.com/fzkuo' target="_blank">
+                            <img src='../../static/images/icon/weibo-h.png' alt='微博' />
+                        </a>
                     </li>
                 </ul>
                 <ul>
                     <li>
-                        <img src='../../static/images/icon/QQ.png' alt='QQ' />
+                        <a href="tencent://message/?uin=121271770&Site=&Menu=yes" target="_blank"> 
+                            <img src='../../static/images/icon/QQ.png' alt='QQ' />
+                        </a>
                     </li>
                     <li>
-                        <img src='../../static/images/icon/QQ-h.png' alt='QQ' />
+                        <a href="tencent://message/?uin=121271770&Site=&Menu=yes" target="_blank" > 
+                            <img src='../../static/images/icon/QQ-h.png' alt='QQ' />
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
-        <!-- <nav>
-            <div class='logo'>
-                <a href='/'>fuzhongkuo.com</a>
-            </div>
-            <div class='nav'>
-                <a href=''>网站首页</a>
-                <a href='news.html'>前端技术</a>
-                <a href='live.html'>艺术生活</a>
-                <a href='about.html'>关于我</a>
-            </div>
-        </nav> -->
         <nav-e></nav-e>
-        <div class='main wrap'>
-            <div class='news'>
-                <section v-for='(item, index) in articles'>
-                    <h2>
-                        <a @click="articleDetail(item)">{{ item.title }}</a>
-                    </h2>
-                    <p class='tag'>时间：{{ item.createTime }}    浏览：200  评论：20</p>
+        <div class='wrap home'>
+            <div class='main'>
+                <section v-for='(item, index) in articles' @click="articleDetail(item)">
+                    <div class='tit'>
+                        <a>{{ item.title }}...</a>
+                        <em>
+                            <time class='time'>发布时间：{{ item.createTime | formDate }}</time>
+                            <span>浏览：200</span>
+                            <span>评论：20</span>
+                        </em>
+                    </div>
                     <img src='../../static/images/test/pic-1.png' v-bind:src='item.img'>
-                    <p v-html='item.content'></p>
+                    <p class='con' v-html='item.content'></p>
+                </section>
+                <section class='page'>
+                    <ul>
+                        <li v-for='item in 10'>第{{ item }}页</li>
+                    </ul>
                 </section>
             </div>
-            <aside>
+            <aside class='side'>
                 <article class='tag'>
                     <h3>分类标签</h3>
                     <div>
@@ -68,37 +74,9 @@
                 <article class='message'>
                     <h3>最新留言</h3>
                     <ul>
-                        <li>
-                            <span>e-pan：</span>
-                            <a href=''>关于使用HTML5 canvas制作涂鸦板的方法？</a>
-                        </li>
-                        <li>
-                            <span>e-pan：</span>
-                            <a href=''>关于使用HTML5 canvas制作涂鸦板的方法？</a>
-                        </li>
-                        <li>
-                            <span>e-pan：</span>
-                            <a href=''>关于使用HTML5 canvas制作涂鸦板的方法？</a>
-                        </li>
-                        <li>
-                            <span>e-pan：</span>
-                            <a href=''>关于使用HTML5 canvas制作涂鸦板的方法？</a>
-                        </li>
-                        <li>
-                            <span>e-pan：</span>
-                            <a href=''>关于使用HTML5 canvas制作涂鸦板的方法？</a>
-                        </li>
-                        <li>
-                            <span>e-pan：</span>
-                            <a href=''>关于使用HTML5 canvas制作涂鸦板的方法？</a>
-                        </li>
-                        <li>
-                            <span>e-pan：</span>
-                            <a href=''>关于使用HTML5 canvas制作涂鸦板的方法？</a>
-                        </li>
-                        <li>
-                            <span>e-pan：</span>
-                            <a href=''>关于使用HTML5 canvas制作涂鸦板的方法？</a>
+                        <li v-for='item in msg'>
+                            <span>{{ item.nickName }}：</span>
+                            <a href=''>{{ item.content }}</a>
                         </li>
                     </ul>
                 </article>
@@ -107,16 +85,52 @@
         <footer-e></footer-e>
     </div>
 </template>
-
+<style lang='less' src='../../static/less/e-pan.less'></style>
 <script>
 import nav from '@/components/common/nav'
 import footer from '@/components/common/footer'
+import { formatDay } from '../../static/js/e-pan'
 export default {
     name: 'home',
     data () {
         return {
             tags: [],
-            articles: []
+            articles: [],
+            msg: [
+                {
+                    nickName: 'e-pan',
+                    content: '你好啊？'
+                },
+                {
+                    nickName: 'e-pan',
+                    content: '你好啊？'
+                },{
+                    nickName: 'e-pan',
+                    content: '你好啊？'
+                },{
+                    nickName: 'e-pan',
+                    content: '你好啊？'
+                },{
+                    nickName: 'e-pan',
+                    content: '你好啊？'
+                },{
+                    nickName: 'e-pan',
+                    content: '你好啊？'
+                },{
+                    nickName: 'e-pan',
+                    content: '你好啊？'
+                },{
+                    nickName: 'e-pan',
+                    content: '你好啊？'
+                },{
+                    nickName: 'e-pan',
+                    content: '你好啊？'
+                },{
+                    nickName: 'e-pan',
+                    content: '你好啊？'
+                }
+            ],
+            show: true
         }
     },
     components: {
@@ -137,13 +151,10 @@ export default {
                 params: {}
             }).then(function(response) {
                 var datas = response.data
-                console.log(datas)
                 if (datas.code == 200) {
                     that.tags = datas.data
                 }
-                //that.$router.push('/register');
             }).catch(function(error) {
-                //console.log(error)
             })
         },
         getArticleList: function () {
@@ -154,17 +165,13 @@ export default {
                 params: {}
             }).then(function(response) {
                 var datas = response.data
-                console.log(datas)
                 if (datas.code == 200) {
                     that.articles = datas.data
                 }
-                //that.$router.push('/register');
             }).catch(function(error) {
-                //console.log(error)
             })
         },
         articleDetail: function (item) {
-            console.log(item)
             this.$router.push('/articleDetail?id='+ item._id);
         }
     },
@@ -177,6 +184,9 @@ export default {
             this.getTag()
             this.getArticleList()
         })
+    },
+    filters: {
+        formDate: (value) => formatDay(Number(value), 'yyyy-MM-dd hh:mm')
     }
 }
 </script>

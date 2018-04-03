@@ -1,22 +1,22 @@
 <template>
     <section id='u-article' v-cloak>
         <user-nav></user-nav>
-        <article class='u-wrap'>
-            <section class='u-article'>
+        <article class='wrap u-article'>
+            <section>
                 <p class='tit'>文章标题</p>
                 <input placeholder="请输入标题..." type="text" v-model="articleTitle" />
             </section>
-            <section class='u-article'>
+            <section>
                 <p class='tit'>文章缩略图</p>
                 <input type="file" @change='upload' />
             </section>
-            <section class='u-article'>
+            <section>
                 <p class='tit'>文章标签</p>
                 <ul>
                     <li v-for='item in tags' @click='checkTag'>{{ item.name }}</li>
                 </ul>
             </section>
-            <section class='u-article'>
+            <section>
                 <p class='tit'>文章内容</p>
                 <quill-editor ref="myTextEditor" :content="content" :config="editorOption" @change="onEditorChange($event)"></quill-editor>
                 
@@ -25,65 +25,18 @@
                 <button @click='validate'>提交</button>
             </section>
         </article>
-        <user-footer></user-footer>
+        <footer-e></footer-e>
     </section>
 </template>
 
+<style lang='less' src='../../../static/less/e-pan.less'></style>
 <style lang='less'>
     .ql-editor.ql-blank {
         min-height: 300px;
     }
-    .u-article {
-        margin-top: 20px;
-        background: #f5f5f5;
-        padding: 10px 30px;
-
-        .tit {
-            height: 30px;
-            line-height: 30px;
-            margin-bottom: 20px;
-        }
-        input[type='text'] {
-            border: 0;
-            border-bottom: 1px solid #ccc;
-            width: 100%;
-            height: 30px;
-            line-height: 30px;
-        }
-        input[type='file'] {
-            width: 100%;
-        }
-        ul {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-        }
-        li {
-            padding: 10px 20px;
-            flex-wrap: wrap;
-            border: 1px solid #ccc;
-
-            &.active {
-                background: #ccc;
-                color: #000;
-            }
-        }
-    }
-   .submit {
-        width: 100%;
-        text-align: center;
-        background: #f5f5f5;
-        margin-bottom: 50px; 
-        height: 50px;
-        line-height: 50px;
-
-        button {
-            padding: 10px 100px;
-        }
-    }
 </style>
 <script>
-import userFooter from '@/components/common/userFooter'
+import footer from '@/components/common/footer'
 import userNav from '@/components/common/userNav'
 import { quillEditor } from 'vue-quill-editor'
 // import 'quill/dist/quill.core.css'
@@ -106,7 +59,7 @@ export default {
     components: {
         quillEditor,
         "user-nav": userNav,
-        "user-footer": userFooter
+        "footer-e": footer
     },
     mounted() {
         //console.log('this is current quill instance object', this.myQuillEditor)

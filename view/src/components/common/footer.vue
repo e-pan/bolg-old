@@ -1,7 +1,6 @@
 <template>
     <footer>
-        &copy;2011-2017
-        <span>浙6565656</span>
-        <a href=''>E盘111</a>
+        <span>&copy;2011-2018</span>
+        <span>浙ICP备12039214号-1</span>
     </footer>
 </template>

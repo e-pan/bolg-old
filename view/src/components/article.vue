@@ -1,7 +1,7 @@
 <template>
     <section v-cloak>
         <nav-e></nav-e>
-        <section class='u-wrap article'>
+        <section class='wrap article min-box'>
             <h2>文章列表</h2>
             <ul>
                 <li v-for='(item, index) in articles' @click='detail(item)'>
@@ -14,36 +14,7 @@
         <footer-e></footer-e>
     </section>
 </template>
-<style lang='less'>
-    .article {
-        background: #f5f5f5;
-        padding: 10px 30px;
-        margin: 20px auto;
-
-        h2 {
-            height: 50px;
-            line-height: 50px;
-            border-bottom: 1px solid #ddd;
-        }
-        li {
-            height: 50px;
-            line-height: 50px;
-            border-bottom: 1px dotted #ddd;
-            cursor: pointer;
-            padding: 0 20px;
-
-            &:hover {
-                background: #fff;
-            }
-            .time {
-                color: #666;
-                padding-left: 30px;
-                font-size: 12px;
-                float: right;
-            }
-        }
-    }
-</style>
+<style lang='less' src='../../static/less/e-pan.less'></style>
 <script>
     import nav from '@/components/common/nav'
     import footer from '@/components/common/footer'

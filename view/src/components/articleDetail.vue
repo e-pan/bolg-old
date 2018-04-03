@@ -1,7 +1,7 @@
 <template>
     <section id='article-detail' v-cloak>
         <nav-e></nav-e>
-        <article class='u-wrap article-detail'>
+        <article class='wrap article-detail min-box'>
             <h2>{{ title }}</h2>
             <div class='tag'>
                 <span>发布时间：{{ createTime | formatDate }}</span>
@@ -13,36 +13,7 @@
         <footer-e></footer-e>
     </section>
 </template>
-
-<style lang='less'>
-    .article-detail {
-        background: #f5f5f5;
-        padding: 10px 30px;
-        margin: 20px auto;
-    }
-    h2 {
-        margin-top: 20px;
-        font-size: 16px;
-    }
-    .tag {
-        margin-top: 20px;
-        color: #666;
-        display: block;
-    }
-    img {
-        max-width: 400px;
-        border: 1px solid #ddd;
-        margin-top: 20px;
-    }
-    p {
-        text-indent: 2em;
-        line-height: 30px;
-    }
-    .content {
-        margin-top: 20px;
-    }
-</style>
-
+<style lang='less' src='../../static/less/e-pan.less'></style>
 <script>
 import nav from '@/components/common/nav'
 import footer from '@/components/common/footer'
@@ -74,17 +45,14 @@ export default {
                 }
             }).then(function(response) {
                 var datas = response.data
-                console.log(datas)
                 if (datas.code == 200) {
                     that.title = datas.data.title
                     that.content = datas.data.content
                     that.img = datas.data.img
                     that.createTime = datas.data.createTime
-
                     that.tag = datas.data.tag
                 }
             }).catch(function(error) {
-                //console.log(error)
             })
         }
     },

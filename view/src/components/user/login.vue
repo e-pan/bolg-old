@@ -4,59 +4,14 @@
             <span>Username</span>
             <input type="text" name="userName" placeholder="登录名" v-model='userName' />
             <span>Password</span>
-            <input type="text" name="password" placeholder="密码" v-model='password' />
+            <input type="password" name="password" placeholder="密码" v-model='password' />
             <button :disabled='!userName || !password' @click='login'>登录</button>
         </div>
     </section>
 </template>
 
-<style lang="less">
-    html {
-        min-height: 100%;
-        background: #dce1e4;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .login .box {
-        background: #ebf0f3;
-        border: 1px solid #b8bcbd;
-        padding: 30px;
-        width: 300px;
-        border-radius: 5px;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-
-        span {
-            text-align: left;
-            width: 100%;
-            color: #494d50;
-            font-size: 12px;
-        }
-        input {
-            width: 98%;
-            background: #f1f5f6;
-            border: 1px solid #b8bcbd;
-            height: 30px;
-            line-height: 30px;
-            border-radius: 3px;
-            margin: 5px 0 10px 0;
-            padding-left: 2%;
-        }
-        button {
-            background: #f1f5f6;
-            border: 1px solid #b8bcbd;
-            height: 30px;
-            line-height: 30px;
-            border-radius: 3px;
-            width: 100px;
-            margin-top: 10px;
-        }
-        button[disabled] {
-            cursor: not-allowed;
-        }
-    }
+<style lang="less" src='../../../static/less/e-pan.less'>
+   
 </style>
 <script>
 export default {
@@ -72,6 +27,11 @@ export default {
     components: {
     },
     methods: {
+        setPage: function () {
+            var windowH = window.innerHeight
+            var windwoW = document.body.scrollWidth
+            document.querySelector(".login").style.height = windowH + "px"
+        },
         login: function () {
             let that = this
             this.$http({
@@ -100,6 +60,7 @@ export default {
     },
     mounted: function () {
         this.$nextTick(function () {
+            this.setPage()
         })
     }
 }

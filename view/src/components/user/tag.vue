@@ -1,71 +1,25 @@
 <template>
     <section id='u-tag' v-cloak> 
         <user-nav></user-nav>
-        <section class='u-wrap'>
-            <div class='tag-item'>
-                <p class="tit">
-                    <span>我的标签</span>
-                    <em @click='addTag'>添加+</em>
-                </p>
-                <ul class='tag-list'>
-                    <li v-for='tag in tags'>
-                        <em>{{ tag.name }}</em>
-                        <i @click='removeTag(tag)'>X</i>
-                    </li>
-                </ul>
-            </div>
+        <section class='wrap tag-item min-box'>
+            <p class="tit">
+                <span>我的标签</span>
+                <em @click='addTag'>添加+</em>
+            </p>
+            <ul class='tag-list'>
+                <li v-for='tag in tags'>
+                    <em>{{ tag.name }}</em>
+                    <i @click='removeTag(tag)'>X</i>
+                </li>
+            </ul>
         </section>
-        <user-footer></user-footer>
+        <footer-e></footer-e>
     </section>
 </template>
 
-<style lang='less'>
-    .tag-item {
-        background: #f5f5f5;
-        padding: 10px 30px;
-        margin-top: 20px;
-        .tit {
-            display: inline-block;
-            border-bottom: 1px solid #ccc;
-            height: 50px;
-            line-height: 50px;
-            width: 100%;
-
-            span {
-                float: left;
-            }
-            em {
-                float: right;
-                cursor: pointer;
-            }
-        }
-
-        .tag-list {
-            display: flex;
-            justify-content: flex-start;
-            margin-top: 20px;
-            flex-wrap: wrap;
-
-            li {
-                background: #fff;
-                position: relative;
-                padding: 10px 30px;
-
-                i {
-                    position: absolute;
-                    top: -5px;
-                    right: -2px;
-                    font-size: 14px;
-                    color: #f00;
-                    font-style: normal;
-                    cursor: pointer;
-                }
-            }
-        }
-    }
-</style>
+<style lang='less' src='../../../static/less/e-pan.less'></style>
 <script>
-import userFooter from '@/components/common/userFooter'
+import footer from '@/components/common/footer'
 import userNav from '@/components/common/userNav'
 
 export default {
@@ -77,7 +31,7 @@ export default {
     },
     components: {
         "user-nav": userNav,
-        "user-footer": userFooter
+        "footer-e": footer
     },
     mounted() {
 

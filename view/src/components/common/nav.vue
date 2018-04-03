@@ -1,5 +1,5 @@
 <template>
-    <nav class='home'>
+    <nav class='menu'>
         <div class='logo'>
             <a href='/'>fuzhongkuo.com</a>
         </div>
