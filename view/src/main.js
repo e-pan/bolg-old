@@ -22,7 +22,7 @@ Vue.use(vueQuillEditor)
 
 // 将API方法绑定到全局
 Vue.prototype.$http = axios
-Vue.prototype.HOST = 'www.fuzhongkuo.com'
+Vue.prototype.HOST = 'http://www.fuzhongkuo.com'
 Vue.config.productionTip = false
 
 // 1. 创建 router 实例，然后传 `routes` 配置
