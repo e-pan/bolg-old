@@ -48,9 +48,9 @@
     $ git clone git@github.com:e-pan/bolg.git
     
     $ cd service 
-
+    
     $ npm install
-
+    
     $ npm start
     
     $ cd view
