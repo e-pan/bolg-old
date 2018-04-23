@@ -48,6 +48,8 @@ export default {
                 var datas = response.data
                 console.log(datas)
                 if (datas.code == 200) {
+                    // 登录成功写入 localStorage
+                    localStorage.setItem('isLogin', true)
                     that.$router.push('/admin');
                 }
 

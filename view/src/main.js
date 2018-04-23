@@ -1,6 +1,5 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
+import Vuex from 'vuex'
 import VueRouter from 'vue-router'
 //import mint from 'mint-ui'              // 基于 Vue.js 的移动端组件库
 //import ElementUI from 'element-ui'      // 饿了么UI
@@ -19,11 +18,12 @@ Vue.use(VueRouter)
 //Vue.use(mint)
 //Vue.use(ElementUI)
 Vue.use(vueQuillEditor)
+Vue.use(Vuex)
 
 // 将API方法绑定到全局
 Vue.prototype.$http = axios
-//Vue.prototype.HOST = '/api'
-Vue.prototype.HOST = ''
+Vue.prototype.HOST = '/api' // 开发
+//Vue.prototype.HOST = ''  // 发布
 Vue.config.productionTip = false
 
 // 1. 创建 router 实例，然后传 `routes` 配置

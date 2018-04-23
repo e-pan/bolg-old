@@ -21,8 +21,12 @@
                         id: '/',
                     },
                     {
-                        text: '文章列表',
+                        text: '技术范',
                         id: 'article',
+                    },
+                    {
+                        text: '文艺范',
+                        id: 'artist',
                     },
                     {
                         text: '关于我',
@@ -37,7 +41,11 @@
         },
         methods: {
             nav(item) {
-                this.$router.push(item.id)
+                if (item.id == 'admin') {
+                    this.$router.push('/login')
+                } else {
+                    this.$router.push(item.id)
+                }
             }
         }
     }

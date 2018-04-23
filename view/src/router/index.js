@@ -15,6 +15,9 @@ const articleDetail = function(param) {
 // 前台关于我
 const about = param => require.ensure([], () => param(require('../components/about')), 'about')
 
+// 前台艺术范
+const artist = r => require.ensure([], () => r(require('../components/artist')), 'artist')
+
 // 后台登陆
 const userLogin = function(param) {
     return require.ensure([], function () {
@@ -72,6 +75,11 @@ export default [  //顶层路由,对应app.vue
         component: about
     },
     {
+        path: '/artist',
+        name: 'artist',
+        component: artist
+    },
+    {
         path: '/login',
         name: 'userLogin',
         component: userLogin
@@ -90,5 +98,10 @@ export default [  //顶层路由,对应app.vue
         path: '/admin/tag',
         name: 'adminTag',
         component: adminTag
+    },
+    {
+        // 错误路由进入首页
+        path: '*',
+        redirect: '/'
     }
 ]
