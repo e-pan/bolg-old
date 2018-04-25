@@ -34,7 +34,19 @@ const router = new VueRouter({
     //mode设置为"history"时，浏览器URL显示为(http://localhost:8000/firsts/first),设置“history”后链接中没有#
     mode: 'history',
     strict: process.env.NODE_ENV !== 'production',
-    routes
+    routes,
+    scrollBehavior (to, from, savedPosition) {
+      // 定位到上次滚动地方
+      console.log(savedPosition)
+      if (savedPosition) {
+        //return savedPosition // 官方
+        setTimeout(() => {
+            window.scrollTo(savedPosition.x, savedPosition.y)
+        }, 200)
+      } else {
+        return { x: 0, y: 0 }
+      }
+    }
 })
 
 /* 路由发生变化修改页面title */

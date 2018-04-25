@@ -18,6 +18,9 @@ const about = param => require.ensure([], () => param(require('../components/abo
 // 前台艺术范
 const artist = r => require.ensure([], () => r(require('../components/artist')), 'artist')
 
+// 前台艺术范
+const store = r => require.ensure([], () => r(require('../components/store')), 'store')
+
 // 后台登陆
 const userLogin = function(param) {
     return require.ensure([], function () {
@@ -46,13 +49,12 @@ const adminTag = function(param) {
 //路由配置 -- 路由嵌套
 export default [  //顶层路由,对应app.vue
     {
+        path: '*',
+        redirect: '/home' // 错误路由进入首页
+    },
+    {
         path: '/',
-        name: 'home',
-        component: home,
-        meta: {
-            title: '首页',
-            content: 'disable'
-        }
+        redirect: '/home' // 如果路由是'/'进入首页
     },
     {
         path: '/home',
@@ -67,7 +69,10 @@ export default [  //顶层路由,对应app.vue
     {
         path: '/articleDetail',
         name: 'articleDetail',
-        component: articleDetail
+        component: articleDetail,
+        props: (route) => ({ 
+            ids: route.query.id 
+        }) //ids为传入到页面标示
     },
     {
         path: '/about',
@@ -100,8 +105,8 @@ export default [  //顶层路由,对应app.vue
         component: adminTag
     },
     {
-        // 错误路由进入首页
-        path: '*',
-        redirect: '/'
+        path: '/store',
+        name: 'store',
+        component: store
     }
 ]

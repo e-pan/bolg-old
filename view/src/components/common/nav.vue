@@ -41,10 +41,14 @@
         },
         methods: {
             nav(item) {
-                if (item.id == 'admin') {
-                    this.$router.push('/login')
-                } else {
+                if (item.id != 'admin') {
                     this.$router.push(item.id)
+                } else {
+                    if (localStorage.getItem('isLogin')) {
+                        this.$router.push(item.id)
+                    } else {
+                        this.$router.push('/login')
+                    }
                 }
             }
         }

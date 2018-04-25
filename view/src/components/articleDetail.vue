@@ -7,7 +7,7 @@
                 <span>发布时间：{{ createTime | formatDate }}</span>
                 <span v-if='tag'>标签：{{ tag }}</span>
             </div>
-            <img v-bind:src='img'>
+            <img :src='img'>
             <div v-html='content' class='content'></div>
         </article>
         <footer-e></footer-e>
@@ -17,7 +17,7 @@
 <script>
 import nav from '@/components/common/nav'
 import footer from '@/components/common/footer'
-import { getQueryString, formatDay } from '../../static/js/e-pan'
+import { formatDay } from '../../static/js/e-pan'
 
 export default {
     name: 'article-detail',
@@ -30,6 +30,8 @@ export default {
             createTime: ''
         }
     },
+    // 通过路由传递进来的ids获取数据的id
+    props: ['ids'],
     components: {
         'nav-e': nav,
         'footer-e': footer
@@ -41,7 +43,7 @@ export default {
                 method: 'post',
                 url: this.HOST + '/api/getArticleDetail',
                 params: {
-                    id: that.id
+                    id: that.ids
                 }
             }).then(function(response) {
                 var datas = response.data
@@ -61,8 +63,9 @@ export default {
     },
     mounted: function () {
         this.$nextTick(function () {
-            this.id = getQueryString("id")
-            if (this.id) {
+            console.log(this.$router)
+            console.log(this.ids)
+            if (this.ids) {
                 this.getDetail()
             }
         })

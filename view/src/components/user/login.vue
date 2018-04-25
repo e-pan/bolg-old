@@ -14,13 +14,13 @@
    
 </style>
 <script>
+import { mapActions, mapState } from 'vuex'
 export default {
     name: 'login',
     data () {
         return {
             userName : '',
             password : '',
-            centerDialogVisible: false,
             msg: ''
         }
     },
@@ -52,9 +52,8 @@ export default {
                     localStorage.setItem('isLogin', true)
                     that.$router.push('/admin');
                 }
-
             }).catch(function(error) {
-                that.centerDialogVisible = true
+                
             })
         }
     },
