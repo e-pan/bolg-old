@@ -1,10 +1,11 @@
 <template>
-    <section v-cloak>
+    <section> 
         <nav-e></nav-e>
         <section class='wrap article min-box'>
             <h2>文章列表</h2>
             <ul>
-                <li v-for='(item, index) in articles' @click='detail(item)'>
+                <!-- key不推荐用index,使用：key为了在渲染虚拟dom时候减少开销，虚拟dom使用的时diff算法 -->
+                <li v-for='(item, index) in articles' :key='item' @click='detail(item)'>
                     <span>{{ index + 1 }}.</span>
                     <span>{{ item.title }}...</span>
                     <span class='time'>发布时间：{{ item.createTime | formatDate }}</span>

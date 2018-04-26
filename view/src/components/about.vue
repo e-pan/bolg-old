@@ -1,5 +1,5 @@
 <template>
-    <section v-cloak id='about'>
+    <section id='about'>
     	<nav-e></nav-e>
     	<div class='wrap about'> 
     		<section>

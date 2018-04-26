@@ -1,5 +1,5 @@
 <template>
-	<section id='artist' class='artist' v-cloak>
+	<section id='artist' class='artist'> 
 		<nav-e></nav-e>
 		<child :lists='lists' v-on:childClick='parsentClick'></child>
 		<footer-e></footer-e>

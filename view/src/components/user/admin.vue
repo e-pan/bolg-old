@@ -1,5 +1,5 @@
 <template>
-   <section id='u-home' v-cloak>
+   <section id='u-home'> 
         <user-nav></user-nav>
         <section class='wrap u-home min-box'>
             欢迎进入后台管理系统！

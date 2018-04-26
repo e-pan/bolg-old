@@ -1,5 +1,5 @@
 <template>
-    <section id='u-tag' v-cloak> 
+    <section id='u-tag' > 
         <user-nav></user-nav>
         <section class='wrap tag-item min-box'>
             <p class="tit">

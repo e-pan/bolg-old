@@ -1,5 +1,5 @@
 <template>
-    <div id='home' v-cloak>
+    <div id='home'> 
         <div class="banner" v-show='show'>
             <div>
                 <img src="../../static/images/logo.png" class='logo' />

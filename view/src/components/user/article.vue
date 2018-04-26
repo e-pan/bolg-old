@@ -1,5 +1,5 @@
 <template>
-    <section id='u-article' v-cloak>
+    <section id='u-article'> 
         <user-nav></user-nav>
         <article class='wrap u-article'>
             <section>
