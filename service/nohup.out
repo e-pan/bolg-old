@@ -1,0 +1,111 @@
+
+> service@0.0.0 start /home/com.fuzhongkuo.www/service
+> node ./bin/www
+
+module.js:545
+    throw err;
+    ^
+
+Error: Cannot find module 'express'
+    at Function.Module._resolveFilename (module.js:543:15)
+    at Function.Module._load (module.js:470:25)
+    at Module.require (module.js:593:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/com.fuzhongkuo.www/service/app.js:1:77)
+    at Module._compile (module.js:649:30)
+    at Object.Module._extensions..js (module.js:660:10)
+    at Module.load (module.js:561:32)
+    at tryModuleLoad (module.js:501:12)
+    at Function.Module._load (module.js:493:3)
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! service@0.0.0 start: `node ./bin/www`
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the service@0.0.0 start script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+npm WARN Local package.json exists, but node_modules missing, did you mean to install?
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /root/.npm/_logs/2018-04-08T07_48_59_061Z-debug.log
+
+> service@0.0.0 start /home/com.fuzhongkuo.www/service
+> node ./bin/www
+
+getTag连接成功
+[0mPOST /api/getTag [32m200 [0m56.121 ms - 199[0m
+[0mPOST /api/getArticleList [32m200 [0m44.987 ms - 266[0m
+getTag连接成功
+[0mPOST /api/getTag [32m200 [0m5.719 ms - 199[0m
+{ _id: '5abde3a7f82aad696fa94d4c' }
+removeTag连接成功
+5abde3a7f82aad696fa94d4c
+[0mPOST /api/removeTag?_id=5abde3a7f82aad696fa94d4c [32m200 [0m28.383 ms - 34[0m
+[0mPOST /api/getArticleList [32m200 [0m3.932 ms - 266[0m
+getTag连接成功
+[0mPOST /api/getTag [32m200 [0m3.148 ms - 142[0m
+getTag连接成功
+[0mPOST /api/getTag [32m200 [0m6.064 ms - 142[0m
+{ tagName: 'jquery' }
+addTag连接成功
+[0mPOST /api/addTag?tagName=jquery [32m200 [0m21.722 ms - 12[0m
+{ tagName: 'vue' }
+addTag连接成功
+[0mPOST /api/addTag?tagName=vue [32m200 [0m7.517 ms - 12[0m
+{ tagName: 'javasctipt' }
+addTag连接成功
+[0mPOST /api/addTag?tagName=javasctipt [32m200 [0m5.323 ms - 12[0m
+{ tagName: 'nodejs' }
+addTag连接成功
+[0mPOST /api/addTag?tagName=nodejs [32m200 [0m5.413 ms - 12[0m
+{ tagName: 'linux' }
+addTag连接成功
+[0mPOST /api/addTag?tagName=linux [32m200 [0m4.241 ms - 12[0m
+{ tagName: 'mongodb' }
+addTag连接成功
+[0mPOST /api/addTag?tagName=mongodb [32m200 [0m20.582 ms - 12[0m
+{ tagName: '生活' }
+addTag连接成功
+[0mPOST /api/addTag?tagName=%E7%94%9F%E6%B4%BB [32m200 [0m4.367 ms - 12[0m
+{ _id: '5abdaeccf121af35d61993b7' }
+removeTag连接成功
+5abdaeccf121af35d61993b7
+[0mPOST /api/removeTag?_id=5abdaeccf121af35d61993b7 [32m200 [0m5.117 ms - 34[0m
+{ _id: '5abcdf5a96aa780c8787a01b' }
+removeTag连接成功
+5abcdf5a96aa780c8787a01b
+[0mPOST /api/removeTag?_id=5abcdf5a96aa780c8787a01b [32m200 [0m6.850 ms - 34[0m
+getTag连接成功
+[0mPOST /api/getTag [32m200 [0m4.541 ms - 435[0m
+[0mPOST /api/getArticleList [32m200 [0m4.890 ms - 266[0m
+getTag连接成功
+[0mPOST /api/getTag [32m200 [0m4.168 ms - 435[0m
+getTag连接成功
+[0mPOST /api/getTag [32m200 [0m6.342 ms - 435[0m
+getTag连接成功
+[0mPOST /api/getTag [32m200 [0m4.208 ms - 435[0m
+
+> service@0.0.0 start /home/com.fuzhongkuo.www/service
+> node ./bin/www
+
+getTag连接成功
+[0mPOST /api/getTag [32m200 [0m54.678 ms - 435[0m
+[0mPOST /api/getArticleList [32m200 [0m44.082 ms - 266[0m
+
+> service@0.0.0 start /home/com.fuzhongkuo.www/service
+> node ./bin/www
+
+getTag连接成功
+[0mPOST /api/getArticleList [32m200 [0m69.108 ms - 266[0m
+[0mPOST /api/getTag [32m200 [0m56.648 ms - 435[0m
+[0mPOST /api/getArticleList [32m200 [0m5.010 ms - 266[0m
+[0mPOST /api/getArticleDetail?id=5abde84cf82aad696fa94d4d [32m200 [0m18.329 ms - 264[0m
+getTag连接成功
+[0mPOST /api/getTag [32m200 [0m6.782 ms - 435[0m
+[0mPOST /api/getArticleList [32m200 [0m6.620 ms - 266[0m
+getTag连接成功
+[0mPOST /api/getArticleList [32m200 [0m6.839 ms - 266[0m
+[0mPOST /api/getTag [32m200 [0m6.035 ms - 435[0m
+getTag连接成功
+[0mPOST /api/getArticleList [32m200 [0m5.949 ms - 266[0m
+[0mPOST /api/getTag [32m200 [0m5.109 ms - 435[0m

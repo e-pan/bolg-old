@@ -1,0 +1,11 @@
+nohup: ignoring input
+module.js:545
+    throw err;
+    ^
+
+Error: Cannot find module '/home/com.fuzhongkuo.www/service/index.js'
+    at Function.Module._resolveFilename (module.js:543:15)
+    at Function.Module._load (module.js:470:25)
+    at Function.Module.runMain (module.js:690:10)
+    at startup (bootstrap_node.js:194:16)
+    at bootstrap_node.js:666:3
