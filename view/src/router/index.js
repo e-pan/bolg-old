@@ -9,7 +9,7 @@ const article = param => require.ensure([], () => param(require('../components/a
 // 前台文章列表详情
 const articleDetail = function(param) {
     return require.ensure([], function () {
-        return param(require('../components/articleDetail'))
+        return param(require('../components/articleDetail.vue'))
     }, 'articleDetail');
 };
 // 前台关于我

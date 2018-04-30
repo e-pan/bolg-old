@@ -51,8 +51,8 @@
                         <a>{{ item.title }}...</a>
                         <em>
                             <time class='time'>发布时间：{{ item.createTime | formDate }}</time>
-                            <span>浏览：200</span>
-                            <span>评论：20</span>
+                            <span>浏览：{{ preview }}次</span>
+                            <span>评论：{{ comment }}条</span>
                         </em>
                     </div>
                     <img src='../../static/images/test/pic-1.png' :src='item.img'>
@@ -96,6 +96,8 @@ export default {
         return {
             tags: [],
             articles: [],
+            preview: 0,
+            comment: 0,
             msg: [
                 {
                     nickName: 'e-pan',

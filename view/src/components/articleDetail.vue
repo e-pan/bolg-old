@@ -18,7 +18,6 @@
 import nav from '@/components/common/nav'
 import footer from '@/components/common/footer'
 import { formatDay } from '../../static/js/e-pan'
-//import articleDetail from './articleDetail.js'
 
 export default {
     name: 'article-detail',

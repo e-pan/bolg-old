@@ -4,7 +4,7 @@
             <a href='/'>fuzhongkuo.com</a>
         </div>
         <div class='nav'>
-            <a @click='nav(item)' v-for='(item, index) in navs' :key='item'>
+            <a @click='nav(item)' v-for='(item, index) in navs' :key='index'>
                 {{ item.text }}
             </a>
         </div>

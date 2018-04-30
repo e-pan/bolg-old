@@ -13,7 +13,7 @@
             <section>
                 <p class='tit'>文章标签</p>
                 <ul>
-                    <li v-for='item in tags' :key='item' @click='checkTag'>{{ item.name }}</li>
+                    <li v-for='item in tags' @click='checkTag'>{{ item.name }}</li>
                 </ul>
             </section>
             <section>

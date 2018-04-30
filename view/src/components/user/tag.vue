@@ -7,7 +7,7 @@
                 <em @click='addTag'>添加+</em>
             </p>
             <ul class='tag-list'>
-                <li v-for='tag in tags' :key='tag'>
+                <li v-for='tag in tags'>
                     <em>{{ tag.name }}</em>
                     <i @click='removeTag(tag)'>X</i>
                 </li>
