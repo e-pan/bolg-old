@@ -55,7 +55,7 @@
                             <span>评论：20</span>
                         </em>
                     </div>
-                    <img src='../../static/images/test/pic-1.png' v-bind:src='item.img'>
+                    <img src='../../static/images/test/pic-1.png' :src='item.img'>
                     <p class='con' v-html='item.content'></p>
                 </section>
                 <section class='page'>

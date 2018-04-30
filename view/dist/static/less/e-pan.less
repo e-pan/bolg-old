@@ -166,17 +166,49 @@
 	}
 }
 .about {
+	display: flex;
+	flex-direction: column;
+
+	.img-head {
+		width: 200px;
+		height: 200px;
+		border-radius: 200px;
+		border: 10px solid @gray-color;
+		margin-top: 100px;
+	}
 	section {
-		background: #f5f5f5;
 		padding: 10px 30px 30px 30px;
 		margin: 20px auto;
+		
+		* {
+			padding: 10px 0;
+		}
+		h2 {
+			font-weight: normal;
+			text-align: center;
+		}
+		div {
+			text-align: center;
+		}
+		span {
+			display: inline-block;
+			padding: 0 10px;
+		}
 	}
-	h2 {
-		height: 50px;
-		line-height: 50px;
-	}
-	p {
-		text-indent: 2em;
+	.ERcode {
+		display: flex;
+		width: 800px;
+		justify-content: space-between;
+
+		div {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+		img {
+			height: 300px;
+		}
 	}
 }
 
