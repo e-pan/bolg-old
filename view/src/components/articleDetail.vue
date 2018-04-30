@@ -13,7 +13,7 @@
         <footer-e></footer-e>
     </section>
 </template>
-<style lang='less' src='../../static/less/e-pan.less'></style>
+
 <script>
 import nav from '@/components/common/nav'
 import footer from '@/components/common/footer'

@@ -1,7 +1,7 @@
 <template>
 	<article>
 		<ul>
-			<li v-for='item in lists' @click='childClick'>{{ item }}</li>
+			<li v-for='(item, index) in lists' :key='item' @click='childClick'>{{ item }}</li>
 		</ul>
 	</article>
 </template>

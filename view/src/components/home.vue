@@ -46,7 +46,7 @@
         <nav-e></nav-e>
         <div class='wrap home'>
             <div class='main'>
-                <section v-for='(item, index) in articles' @click="articleDetail(item)">
+                <section v-for='(item, index) in articles' :key='index' @click="articleDetail(item)">
                     <div class='tit'>
                         <a>{{ item.title }}...</a>
                         <em>
@@ -60,7 +60,7 @@
                 </section>
                 <section class='page'>
                     <ul>
-                        <li v-for='item in 10'>第{{ item }}页</li>
+                        <li v-for='(page, index) in 10'>第{{ page }}页</li>
                     </ul>
                 </section>
             </div>
@@ -68,13 +68,13 @@
                 <article class='tag'>
                     <h3>分类标签</h3>
                     <div>
-                        <a href='' v-for='item in tags'>{{ item.type }}{{ item.name }}</a>
+                        <a v-for='(tag, index) in tags' :key='index'>{{ tag.type }}{{ tag.name }}</a>
                     </div>
                 </article>
                 <article class='message'>
                     <h3>最新留言</h3>
                     <ul>
-                        <li v-for='item in msg'>
+                        <li v-for='(item, index) in msg' :key='index'>
                             <span>{{ item.nickName }}：</span>
                             <a href=''>{{ item.content }}</a>
                         </li>
@@ -85,7 +85,7 @@
         <footer-e></footer-e>
     </div>
 </template>
-<style lang='less' src='../../static/less/e-pan.less'></style>
+
 <script>
 import nav from '@/components/common/nav'
 import footer from '@/components/common/footer'

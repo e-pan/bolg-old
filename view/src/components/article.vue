@@ -5,7 +5,7 @@
             <h2>文章列表</h2>
             <ul>
                 <!-- key不推荐用index,使用：key为了在渲染虚拟dom时候减少开销，虚拟dom使用的时diff算法 -->
-                <li v-for='(item, index) in articles' :key='item' @click='detail(item)'>
+                <li v-for='(item, index) in articles' :key='index' @click='detail(item)'>
                     <span>{{ index + 1 }}.</span>
                     <span>{{ item.title }}...</span>
                     <span class='time'>发布时间：{{ item.createTime | formatDate }}</span>
@@ -15,7 +15,7 @@
         <footer-e></footer-e>
     </section>
 </template>
-<style lang='less' src='../../static/less/e-pan.less'></style>
+
 <script>
     import nav from '@/components/common/nav'
     import footer from '@/components/common/footer'

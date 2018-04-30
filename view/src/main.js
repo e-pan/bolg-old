@@ -37,7 +37,7 @@ const router = new VueRouter({
     routes,
     scrollBehavior (to, from, savedPosition) {
       // 定位到上次滚动地方
-      console.log(savedPosition)
+      //console.log(savedPosition)
       if (savedPosition) {
         //return savedPosition // 官方
         setTimeout(() => {
@@ -51,14 +51,6 @@ const router = new VueRouter({
 
 /* 路由发生变化修改页面title */
 router.beforeEach((to, from, next) => {
-    let head = document.getElementsByTagName('head');
-    let meta = document.createElement('meta');
-    meta.content = to.meta.content;
-    head[0].appendChild(meta)
-
-  if (to.meta.title) {
-    //document.title = to.meta.title
-  }
   next()
 })
 

@@ -6,7 +6,7 @@
 	</section>
 </template>
 
-<style lang='less' src='../../static/less/e-pan.less'></style>
+
 
 <script>
 	import footer from '@/components/common/footer'
