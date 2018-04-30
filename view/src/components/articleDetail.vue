@@ -7,7 +7,7 @@
                 <span>发布时间：{{ createTime | formatDate }}</span>
                 <span v-if='tag'>标签：{{ tag }}</span>
             </div>
-            <img :src='img'>
+            <div class='img'><img :src='img'></div>
             <div v-html='content' class='content'></div>
         </article>
         <footer-e></footer-e>
