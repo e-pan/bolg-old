@@ -20,10 +20,15 @@ Vue.use(VueRouter)
 Vue.use(vueQuillEditor)
 Vue.use(Vuex)
 
+console.log()
+
 // 将API方法绑定到全局
 Vue.prototype.$http = axios
-Vue.prototype.HOST = '/api' // 开发
-//Vue.prototype.HOST = ''  // 发布
+if (process.env.NODE_ENV === 'development') {
+  Vue.prototype.HOST = '/api' // 开发
+} else {
+  Vue.prototype.HOST = ''  // 发布
+}
 Vue.config.productionTip = false
 
 // 1. 创建 router 实例，然后传 `routes` 配置
