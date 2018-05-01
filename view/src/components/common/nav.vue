@@ -24,10 +24,10 @@
                         text: '技术范',
                         id: 'article',
                     },
-                    {
-                        text: '文艺范',
-                        id: 'artist',
-                    },
+                    // {
+                    //     text: '文艺范',
+                    //     id: 'artist',
+                    // },
                     {
                         text: '关于我',
                         id: 'about',
