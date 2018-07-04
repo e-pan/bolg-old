@@ -1,15 +1,10 @@
 var express = require('express');
 var qiniu = require('qiniu'); // 七牛
 var multipart = require('connect-multiparty'); // formdata中间件
-
-
-
 var mongoose = require('mongoose');
 var MongoClient = require('mongodb').MongoClient;
 var router = express.Router();
 var multipartMiddleware = multipart();
-
-
 var DB_url = 'mongodb://localhost:27017/bolg';
 
 // var options = {
@@ -301,6 +296,5 @@ router.post('/upload', multipartMiddleware, function(req, res) {
         }
     });
 });
-
 
 module.exports = router;
